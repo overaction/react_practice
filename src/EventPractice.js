@@ -1,48 +1,45 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
+import { placeholder } from '@babel/types';
 
-class EventPractice extends Component {
-    state = {
-        username: '',
-        message: ''
+const EventPractice = () => {
+    const [username, setUsername] = useState('');
+    const [message, setMessage] = useState('');
+    const onChangeUsername = (e) => {
+        setUsername(e.target.value);
     }
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-        console.log(e.target.name);
+    const onChangeMessage = (e) => {
+        setMessage(e.target.value);
     }
-    handleClick = () => {
-        alert(this.state.username + ': ' + this.state.message);
-        this.setState({
-            username: '',
-            message: ''
-        })
+    const onClick = () => {
+        alert(username + ': ' + message);
+        setUsername('');
+        setMessage('');
     }
-    render() {
-        const { username, message } = this.state;
+    const onKeyPress = (e) => {
+        if(e.key === 'Enter') onClick();
+    }
 
-        return (
-            <Fragment>
-                <h1>event practice</h1>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="do something"
-                    value={username}
-                    onChange={this.handleChange}
-                ></input>
-                <input
-                    type="text"
-                    name="message"
-                    placeholder="do something"
-                    value={message}
-                    onChange={this.handleChange}
-                ></input>
-                <button onClick = {this.handleClick}>확인
-                </button>
-            </Fragment>
-        )
-    }
+    return (
+        <Fragment>
+            <h1>Event Practice</h1>
+            <input
+                type="text"
+                name="username"
+                placeholder="do"
+                value={username}
+                onChange={onChangeUsername}
+            />
+            <input
+                type="text"
+                name="username"
+                placeholder="do"
+                value={message}
+                onChange={onChangeMessage}
+                onKeyPress={onKeyPress}
+            />
+            <button onClick={onClick}> Enter </button>
+        </Fragment>
+    )
 }
 
 export default EventPractice;
