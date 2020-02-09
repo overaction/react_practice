@@ -5,7 +5,7 @@ const EventPractice = () => {
         username: '',
         message: ''
     });
-    const { username, message } = form;
+    const { username, message } = form; //form.username, form.message 간소화
     const onChange = (e) => {
         const nextForm = {
             ...form,
