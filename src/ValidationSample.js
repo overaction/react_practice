@@ -17,14 +17,14 @@ class ValidationSample extends Component {
         this.setState({
             clicked: true,
             validated: this.state.password === '0000'
-        })
+        });
     }
 
     render() {
         const {password, clicked, validated} = this.state;
         return (
             <Fragment>
-                <input
+                <input 
                     type="password"
                     value={password}
                     onChange={this.handleChange}
