@@ -1,40 +1,30 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useReducer, Fragment } from 'react';
+
+function reducer(state,action) {
+    return {
+        ...state,
+        [action.name]: action.value
+    }
+}
 
 const Info = () => {
-    const [name, setName] = useState('');
-    const [nickname,setNick] = useState('');
-    useEffect(() => {
-        console.log('effect');
-        console.log(name);
-        return () => {
-            console.log('cleanup');
-            console.log(name);
-        }
-    },[name])
-    // 뒷정리 함수로 인해 업데이트 되기 직전의 값을 보여준다
-    const onChangeName = e => {
-        setName(e.target.value);
+    const[state, dispatch] = useReducer(reducer, {
+        name: '',
+        nickname: ''
+    });
+    const {name,nickname} = state;
+    const onChange = e => {
+        dispatch(e.target); //reducer 함수 호출
     }
 
-    const onChangeNick = e => {
-        setNick(e.target.value);
-    }
-
-    return(
+    return (
         <Fragment>
-            <Fragment>
-                <input value={name} onChange={onChangeName} />
-                <input value={nickname} onChange={onChangeNick} />
-                <br/>
-            </Fragment>
-            <Fragment>
-                <Fragment>
-                    <b>name: </b> {name} <br/>
-                </Fragment>
-                <Fragment>
-                    <b>nickname: </b> {nickname}
-                </Fragment>
-            </Fragment>
+            <input name="name" value={name} onChange={onChange} />
+            <input name="nickname" value={nickname} onChange={onChange} />
+            <br/>
+            <b>이름 : </b> {name}> <br/>
+            <b>닉네임 : </b> {nickname}> 
+
         </Fragment>
     )
 }
