@@ -1,9 +1,15 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 
 const Info = () => {
     const [name, setName] = useState('');
     const [nickname,setNick] = useState('');
-
+    useEffect(() => {
+        console.log('rendering complete');
+        console.log({
+            name,
+            nickname
+        })
+    })
     const onChangeName = e => {
         setName(e.target.value);
     }
