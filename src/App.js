@@ -1,8 +1,13 @@
 import React from 'react';
-import SassComponent from './SassComponent';
+import TodoTemplate from './Todo_app/components/TodoTemplate';
+import TodoInsert from './Todo_app/components/TodoInsert';
 
 const App = () => {
-    return <SassComponent />
+    return (
+        <TodoTemplate>
+            <TodoInsert />
+        </TodoTemplate>
+    )
 }
 
 export default App;

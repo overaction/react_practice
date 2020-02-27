@@ -1,0 +1,22 @@
+.TodoTemplate {
+    width: 512px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+    border-radius: 4px; //테두리를 둥글게 만드는 속성
+    overflow: hidden; //요소내의 컨텐츠가 너무 커서 요소내에 모두 보여주기 힘들때 사용
+
+    .app-title {
+        background: #22b8fc;
+        color: white;
+        height: 4rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .content {
+        background: white;
+    }
+}
